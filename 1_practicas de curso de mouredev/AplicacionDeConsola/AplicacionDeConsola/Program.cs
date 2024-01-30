@@ -114,7 +114,7 @@ namespace AplicacionDeConsola // espaco de nombre que creamos (el nuestro)
             //---------------------------- ESTRUCTURAS ----------------------------
             //---------------------------- ESTRUCTURAS ---------------------------- 
 
-            ///****** ARRAY ***** 
+            //****** ARRAY ***** 
 
             //los arrays (Empiezan en la posicion 0 , 1, 2, 3, 4,etc, hasta la longitud que definamos en la creacion del mismo y dicha longitud no se puede cambiar mas)
 
@@ -143,7 +143,7 @@ namespace AplicacionDeConsola // espaco de nombre que creamos (el nuestro)
             // En C# hay que crearlo con la palabra reservada NEW
             var myArray = new string[] { "Hora", "Barrios", "Practica" };
             Console.WriteLine(myArray[0]);
-
+            Console.WriteLine(myArray);// no sale esto: System.String[]
             /*
             //Esto da error!
             myArray[3] = "Agregame este string";
@@ -167,7 +167,7 @@ namespace AplicacionDeConsola // espaco de nombre que creamos (el nuestro)
              Dato extra:-
              */
 
-            ///****** DICTIONARY O DICCIONARIOS ***** 
+            //****** DICTIONARY O DICCIONARIOS ***** 
             var myDictionary = new Dictionary<string, int>
             {
                 {"Julia", 36 }, // clave en string , valor en entero
@@ -175,8 +175,111 @@ namespace AplicacionDeConsola // espaco de nombre que creamos (el nuestro)
                 {"Luis", 15 }
             };
             Console.WriteLine(myDictionary["Alberto"]);// accedemos al diccionario por su clave aca.
+            Console.WriteLine(myDictionary);//nos sale esto: System.Collections.Generic.Dictionary`2[System.String,System.Int32]
 
 
+
+            var myDictionary2 = new Dictionary<string, int> { };
+
+            // Agregar elementos al diccionario
+            myDictionary2.Add("horacio", 38);
+            myDictionary2.Add("cintia", 36);
+            myDictionary2.Add("mitagi", 58);
+
+
+
+            // Acceder a elementos del diccionario
+            Console.WriteLine($"el valor de la clave 'horacio' es: {myDictionary2["horacio"]}");
+
+            //recorrer los elementos del diccionario
+
+            foreach(var kvp in myDictionary2)
+            {
+                Console.WriteLine($"La Clave {kvp.Key} tiene un Valor de {kvp.Value}");
+            }
+
+            /*
+             
+            La variable kvp es una convención comúnmente utilizada en C# y en otros 
+            lenguajes para referirse a un par clave-valor (Key-Value Pair, en inglés) 
+            dentro de un diccionario. kvp es simplemente un acrónimo que 
+            representa "Key-Value Pair". Esta convención es bastante común y ayuda a 
+            que el código sea más legible y comprensible.
+             */
+
+
+            /*
+             
+             ------ DATO ------: 
+            
+            La elección entre usar un bucle foreach y un bucle for depende de la 
+            estructura de datos que estás recorriendo y de tus preferencias personales 
+            en términos de legibilidad y conveniencia.
+
+            * Aquí hay algunas consideraciones para elegir entre foreach y for:
+
+            -------- Foreach:
+
+            Sintaxis simplificada: El bucle foreach proporciona una sintaxis más 
+            simple y directa para recorrer colecciones, como matrices, listas, 
+            diccionarios y otros tipos que implementan la interfaz IEnumerable.
+
+            Estructura de datos complejas: Es especialmente útil cuando 
+            estás trabajando con estructuras de datos complejas, como diccionarios 
+            o listas, donde necesitas acceder tanto a la clave como al valor 
+            (como en el caso de un diccionario).
+
+
+
+            -------- For:
+
+            Control de índice explícito: El bucle for es útil cuando necesitas un 
+            control explícito sobre el índice, como cuando recorres una matriz o 
+            una colección basada en índices numéricos.
+
+            Iteración personalizada: Si necesitas una iteración más compleja, 
+            como un incremento personalizado, iteraciones inversas, o alguna 
+            lógica de control de flujo más avanzada, el bucle for puede ser más apropiado.
+
+
+
+
+
+            En resumen, el bucle foreach es conveniente cuando necesitas 
+            recorrer elementos en una colección de manera simple y cuando no 
+            necesitas controlar explícitamente los índices. Sin embargo, si 
+            necesitas un control más granular sobre el índice o si la lógica 
+            de iteración es más compleja, un bucle for puede ser más apropiado. 
+            En el caso de los diccionarios, donde quieres acceder tanto a la 
+            clave como al valor, el foreach es una opción más natural y legible.
+             
+             */
+
+
+
+            //****** SETS *****
+            var mySet = new HashSet<string> { "nerd", "moura", "julia" };
+
+            Console.WriteLine(mySet);// nos sale esto: System.Collections.Generic.HashSet`1[System.String]
+
+            //Console.WriteLine(mySet[0]); esto falla porque los sets son estructuras desordenadas
+
+            /*los set no pueden tener elementos duplicados pero cuando se va a hacer el hashset 
+             se omiten dichos duplicados*/
+
+
+            //****** TUPLAS *****
+            var myTupla = ("ere", "myu", "ele", "ere");
+            // Console.WriteLine(myTupla[0]); falla porque no tenemos un indexado como tal
+            //hay que acceder siempre recorriendolo
+
+
+
+            //---------------------------- BUCLES ----------------------------
+            //---------------------------- BUCLES ----------------------------
+            //---------------------------- BUCLES ----------------------------
+
+            // (Arriba usé uno para otro ejemplo el foreach) 
         }
     }
 }
