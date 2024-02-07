@@ -269,20 +269,362 @@ namespace AplicacionDeConsola // espaco de nombre que creamos (el nuestro)
 
 
             //****** TUPLAS *****
-            var myTupla = ("ere", "myu", "ele", "ere");
+            var myTupla = ("duplicado", "myu", "ele", "duplicado", "esTupla");
             // Console.WriteLine(myTupla[0]); falla porque no tenemos un indexado como tal
             //hay que acceder siempre recorriendolo
 
+            //Console.WriteLine(myTupla);
+
+
+
+
+
+
 
 
             //---------------------------- BUCLES ----------------------------
             //---------------------------- BUCLES ----------------------------
             //---------------------------- BUCLES ----------------------------
 
-            // (Arriba usé uno para otro ejemplo el foreach) 
+            // For
+
+            List<string> listaDePalabras = new List<string>
+            {
+                "Hola", "Buenas", "chau"
+            };
+
+                //index inicial = 0;que itere si index es menor a 10; en cada iteracion se incrementa el valor de index en +1
+            for (int index = 0; index < 10; index++)
+            {
+                Console.WriteLine(index);// vemos el indice
+                //Console.WriteLine(listaDePalabras[index]); // si queremos ver el valor del elemento en ese indice (en esa posicion) de esta manera rompe porque se el for depende de la longitud del indice : if (index < 10)y no de los elmentos. 
+                /*Unhandled exception. System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection. (Parameter 'index')*/
+
+
+            }
+
+
+
+
+            for (int index = 0; index < listaDePalabras.Count();  index++)
+            {
+                Console.WriteLine(listaDePalabras[index]);// vemos el valor del elemento que esta en la lista en esa posicion indicandole en cada vuelta el indice
+            }
+            // a diferencia del error arriba marcado, aca le decimos que itere teniendo hasta el ultimo elemento y se detenga con la condicion if(index < listaDePalabras.Count())
+
+            // en lugar de hacer lo que esta aca arriba usando foreach se hace mas facil.
+
+            foreach (var palabra in listaDePalabras)
+            {
+                Console.WriteLine(palabra);
+            }
+
+
+            // foreach
+            // forma de inicializar una lista con elementos
+
+            List<string> listaDePalabras2 = new List<string>
+            {
+                "Hola", "Buenas", "chau"
+            };
+
+
+
+            //forma de inicializar una lista, y luego agregarle los elementos 
+
+            //List<string> listaDeälabras2; //Nos da error , porque antes de Add debemos inicializar el objeto list<string> de este caso
+            List<string> listaDePalabras3 = new List<string>();
+
+
+            listaDePalabras3.Add("Hello");
+            listaDePalabras3.Add("Buenas noches");
+            listaDePalabras3.Add("Buenos dias");
+
+            foreach(var palabra in listaDePalabras2)// var palabra esta variable es de scope limitado solo existe dentro de este for
+            {
+                Console.WriteLine(palabra);
+            }
+
+            foreach(string palabra in listaDePalabras3) // string palabra esta variable es de scope limitado solo existe dentro de este for, y es otra variable distinta a la que existe en el for de arriba.
+            {
+                Console.WriteLine(palabra);
+            }
+
+            // Console.WriteLine(palabra); palabra no existe en este contexto, solo dentro del scope donde fue declarado
+
+
+            /*
+             EN RESUMEN:
+             si bien como vimos usando for y foreach se puede recorrer una lista ingresando elemento por elemento
+            FOREACH nos ssirve para recorrer estructuras ya formadas de una forma mas optima
+             
+             */
+
+
+            // ejemplo recorriendo las diferentes estructuras:
+            foreach(var myItem in myArray)
+            {
+                Console.WriteLine(myItem);
+            }
+
+
+            foreach(var myItem in myDictionary)
+            {
+                Console.WriteLine(myItem);
+            }
+
+
+            foreach(var myItem in mySet)
+            {
+                Console.WriteLine(myItem);
+            }
+            /*
+             User
+            un set puede tener elementos repetidos?
+
+            ChatGPT:
+            En términos generales, un conjunto (set) en matemáticas y en la mayoría de 
+            las implementaciones en programación es una colección de elementos distintos, 
+            lo que significa que no puede tener elementos repetidos. Cada elemento 
+            en un conjunto es único.
+
+            en mi set tengo 2 repetidos, al imprimir solo imprime uno solo!!!
+             */
+
+
+
+
+
+
+
+            /* DA ERROR RECORRER UNA TUPLA CON FOREACH ---------------------------------
+            foreach(var myItem in myTupla)
+            {
+                Console.WriteLine(myItem.Item1);
+            }
+
+            NO se puede usar un bucle foreach directamente en una tupla de la 
+            forma (string, string, string, string, string) porque no implementa 
+            la interfaz IEnumerable, la cual es necesaria para poder iterar sobre 
+            sus elementos.
+
+            */
+
+            // PARA RECORRER UNA TUPLA HAY QUE COMVERTIRLA A IEnumerable (que es una interfaz que tiene metodos) -------------
+            //EJEMPLO:
+
+            var myTuple = ("PEPE", "ENRRIQUE", "LUCIA", "SOFI", "PEPE");
+            // Convertir la tupla a IEnumerable
+            IEnumerable<string> enumerableTupla = new List<string> { myTuple.Item1, myTuple.Item2, myTuple.Item3, myTuple.Item4, myTuple.Item5 };
+
+            //iteramos los elem
+            foreach(var item in enumerableTupla)
+            {
+                Console.WriteLine(item);
+            }
+
+
+            /*User
+            una tupla puede tener elementos repetidos?
+
+            ChatGPT:
+            Sí,una tupla en C# puede contener elementos repetidos.         
+            La tupla es una estructura de datos que permite almacenar una secuencia 
+            ordenada de elementos heterogéneos. Esto significa que puedes tener 
+            cualquier combinación de elementos en una tupla, incluidos elementos repetidos.
+            */
+
+
+            //---------------------------- FLUJOS ----------------------------
+            //---------------------------- FLUJOS ----------------------------
+            //---------------------------- FLUJOS ----------------------------
+
+            string myVariable = "Mañana";
+
+            // ejemplo de condicion con if (si la condicion es verdadera ingresa a las llaves y ejecuta el console.writeline
+            if(myVariable == "Mañana")
+            {
+                Console.WriteLine("Hola buen dia");
+            }
+
+
+
+            // ejemplo de dos  condiciones if, si no se cumplen ninguna condicion, entra al else.
+            string myVariable2 = "Mañana";
+
+            if (myVariable2 == "Mañana")
+            {
+                Console.WriteLine("Hola buen dia");
+            }
+            else if(myVariable2 == "Tarde")
+            {
+                Console.WriteLine("Hola buenas tardes");
+            }
+            else
+            {
+                Console.WriteLine("Hola buenas noches");
+            }
+
+
+
+
+            /*
+             tambien podemos crear condiciones usando los operadores logicos AND (&&) y OR (||)
+
+
+             
+             */
+
+            // AND
+            string myVariable3 = "Mañana";
+            bool esValido = true; // true o false
+
+
+
+            if (myVariable3 == "Mañana" && esValido == true) // las dos condiciones deben ser verdaderas para que muestre
+            {
+                Console.WriteLine("Hola buen dia");
+            }
+            else if (myVariable3 == "Tarde" && esValido == true)
+            {
+                Console.WriteLine("Hola buenas tardes");
+            }
+            else if(myVariable3 == "Noche" && esValido == true)
+            {
+                Console.WriteLine("Hola buenas noches");
+            }
+            else
+            {
+                Console.WriteLine("No es valido");
+            }
+
+
+            //OR
+            string nombre1 = "pepe";
+            string nombre2 = "pepe";
+
+            if(nombre1 == "pepe" || nombre2 == "pepe")// con que una de las condiciones sea verdadera ya pasa a la llave y muestra el mensaje
+            {
+                Console.WriteLine("Al menos uno de los nombres es 'pepe'");
+            }
+
+
+            //---------------------------- FUNCIONES O METODOS ----------------------------
+            //---------------------------- FUNCIONES O METODOS ----------------------------
+            //---------------------------- FUNCIONES O METODOS ----------------------------
+
+            /*
+             Una funcion es un bloque de codigo reutilizable.
+
+             un metodo  es una funcion pero dentro del contexto de una class.
+             en el paradigma POO orientado a objetos las funciones que operan sobre los
+             datos de un objeto, se llaman metodos.
+             
+             */
+
+            myFuntion();
+
+            Console.WriteLine(myFuntionWithReturn(100, 50));
+
+
+
+            MyClass miClaseInstanciable = new MyClass("Flior", "Tabulatero", "Gret");
+
+            Console.WriteLine(miClaseInstanciable.myName);
+            Console.WriteLine(miClaseInstanciable.LastName);
+            Console.WriteLine(miClaseInstanciable.SecondLastName);
+
+
+
+            // uso de los setters - cambiamos los valores de los atributos provados
+            miClaseInstanciable.LastName = "McDonal";
+            miClaseInstanciable.SecondLastName = "Pikefor";
+
+
+            Console.WriteLine(miClaseInstanciable.myName);
+            Console.WriteLine(miClaseInstanciable.LastName);
+            Console.WriteLine(miClaseInstanciable.SecondLastName);
+
+        }//fun Main
+
+
+        /*
+        void myFuntion()
+        {
+            Console.WriteLine("Mi funcion");
         }
-    }
-}
+
+        como estamos en el Main esto debeser una funcion estatica:
+
+        error: se requiere una referencia al objeto para el campo, metodo, o propiedad
+        'Program.myFuntion()' no estaticos
+        */
+
+        
+        static void myFuntion()// no recibe parametros y no devuelve nada.
+        {
+            Console.WriteLine("Mi funcion");
+        }
+
+        static int myFuntionWithReturn(int num1, int num2)// recibe dos parametros
+        {
+            return num1 + num2;// devuelve el resultado
+        }
+
+        //---------------------------- CLASS ----------------------------
+        //---------------------------- CLASS ----------------------------
+        //---------------------------- CLASS ----------------------------
+        /*
+         Clase Instanciable:
+
+        Estas son clases que puedes utilizar como plantillas para crear instancias u objetos 
+        en tiempo de ejecución. Puedes crear instancias de estas clases utilizando el 
+        operador new.
+         */
+
+
+        class MyClass
+        {
+            public string myName; // Variable de clase que actúa como un atributo público, permitiendo el acceso externo.
+
+            private string _myLastName; // Campo o atributo privado para almacenar el apellido.
+
+            public string SecondLastName { get; set; }
+            /* 
+            La "Propiedad AutoImplementada" en C# es una sintaxis simplificada que permite declarar propiedades sin necesidad de definir un campo privado explícito.
+            El compilador genera automáticamente un campo privado para almacenar el valor de la propiedad.
+            Puedes acceder y modificar la propiedad SecondLastName como cualquier otra propiedad pública.
+            */
+
+
+            public MyClass(string myName, string myLastName, string secondLastName)            
+            {
+                this.myName = myName;// this hace referencia a todo lo que es de este contexto. o sea, contexto local de este scope.
+                _myLastName = myLastName;
+                SecondLastName = secondLastName;
+            }
+            /* 
+            Constructor que recibe tres parámetros: myName, myLastName y secondLastName.
+            El guion bajo antes de _myLastName es una convención común para los campos privados en C#.
+            */
+
+
+
+            // Propiedad Get y Set para acceder al campo privado _myLastName.
+            public string LastName
+            {
+                get { return _myLastName; } // Getter para obtener el valor de _myLastName.
+                set { _myLastName = value; } // Setter para asignar un valor a _myLastName.
+            }
+        }
+
+
+    }// fin class program
+
+
+}// fin namespace
+
+
 
 
 
