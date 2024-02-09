@@ -20,6 +20,7 @@ namespace Aplicacion
             //Console.WriteLine(direccion.GetType());
 
             Persona persona = new Persona("Sio", direccion);
+            //Console.WriteLine(persona.ToString());
             Console.WriteLine(persona.ToString());
 
         }

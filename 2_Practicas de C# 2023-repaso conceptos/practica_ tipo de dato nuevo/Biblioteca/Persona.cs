@@ -24,11 +24,14 @@ namespace Biblioteca
         }
 
 
+
         //sobrecarga del metodo de la clase cosmica
         public override string ToString()
         {
             // Define cómo quieres que se vea la representación de la persona como cadena
-            return $"Nombre: {_nombre}, Dirección: {_direccion} ";
+            return $"El Nombre es {_nombre} y la  Dirección es  {_direccion} ";
         }
+
+
     }
 }
